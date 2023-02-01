@@ -43,26 +43,19 @@ int main()
 
     while (true){
         char answer;
-        std::cout << "Введите команду('+', '-', '=' или 'x') : ";
+        if(std::cin.peek() == '\n')
+            std::cout << "Введите команду('+', '-', '=' или 'x') : ";
         std::cin >> answer;
-        switch(answer)
-        {
-            case '+':
-                my_count->up();
-                break;
-            case '-':
-                my_count->down();
-                break;
-            case '=':
-                my_count->print();
-                break;
-            case 'x':
-            case 'х':
-                std::cout << "До свидания!";
-                delete my_count;
-                return 0;
-            default:
-                break;
+        if (answer == '+') 
+            my_count->up();
+        else if (answer == '-') 
+            my_count->down();
+        else if (answer == '=') 
+            my_count->print();
+        else if (answer == 'x' || answer == 'х') {
+            std::cout << "До свидания!";
+            delete my_count;
+            return 0;
         }
     }
 }
